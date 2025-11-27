@@ -1,29 +1,29 @@
 public class PharmaOrder{
-private String OrderDate;
+private String orderDate;
 private Medicine medicineRef;
 private int quantity;
-private String UniqueId;
-public PharmaOrder(String OrderDate,Medicine medicineRef,int quantity,String UniqueId){
-this.OrderDate="UNKNOWN";
+private String uniqueId;
+public PharmaOrder(String orderDate,Medicine medicineRef,int quantity,String uniqueId){
+this.orderDate="UNKNOWN";
 this.medicineRef=new Medicine();
 this.quantity=0;
-this.UniqueId="UNSET";
-setOrderDate(OrderDate);
+this.uniqueId="UNSET";
+setorderDate(orderDate);
 setquantity(quantity);
-setUniqueId(UniqueId);
+setuniqueId(uniqueId);
 setmedicineRef(medicineRef);
 }
-public Medicine getmedicineRef(Medicine medicineRef){
+public Medicine getmedicineRef(){
 return medicineRef;
 }
-public String getOrderDate(String OrderDate){
-return OrderDate;
+public String getOrderDate(){
+return orderDate;
 }
-public int getquantity(int quantity){
+public int getquantity(){
 return quantity;
 }
-public String getUniqueId(String UniqueId){
-    return UniqueId;
+public String getUniqueId(){
+    return uniqueId;
 }
 public boolean setmedicineRef(Medicine medicineRef){
 if(medicineRef==null){
@@ -32,11 +32,11 @@ return false;
 this.medicineRef=medicineRef;
 return true;
 }
-public boolean setOrderDate(String OrderDate){
+public boolean setorderDate(String OrderDate){
 if(OrderDate==null||OrderDate.trim().isEmpty()){
 return false;
 }
-this.OrderDate=OrderDate;
+this.orderDate=OrderDate;
 return true;
 }
 public boolean setquantity(int quantity){
@@ -46,19 +46,19 @@ return false;
 this.quantity=quantity;
 return true;
 }
-public boolean setUniqueId(String UniqueId){
+public boolean setuniqueId(String UniqueId){
 if(UniqueId==null||UniqueId.trim().isEmpty()){
 return false;
 }
-this.UniqueId=UniqueId;
+this.uniqueId=UniqueId;
 return true;
-}
+} 
 @Override
 public String toString(){
 return 
 "MedicineRef: "+medicineRef+
-", Order date: "+OrderDate+
-", Unique Id: "+UniqueId+
+", Order date: "+orderDate+
+", Unique Id: "+uniqueId+
 ", Quantity: "+quantity;
 }
 }
