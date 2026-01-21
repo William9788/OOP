@@ -46,7 +46,7 @@ this.orderDate=OrderDate;
 return true;
 }
 public boolean setquantity(int quantity){
-if(quantity<0){
+if(quantity<=0){
 return false;
 }
 this.quantity=quantity;
