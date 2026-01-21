@@ -1,3 +1,25 @@
+import java.util.ArrayList;
 public class PharmaStock {
-    
+    private ArrayList<Medicine> products;
+public PharmaStock(){
+    products = new ArrayList<>();
+}
+public boolean add(Medicine obj){
+    if(obj==null){
+        return false;
+    }
+    products.add(obj);
+    return true;
+}
+public Medicine findMedicine(String name){
+    if(name==null){
+        return null;
+    }
+    for(Medicine m: products){
+        if(m.getMedicineName().equalsIgnoreCase(name)){
+            return m;
+        }
+    }
+    return null;
+}
 }
