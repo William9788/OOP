@@ -5,7 +5,7 @@ private int quantity;
 private String uniqueId;
 public PharmaOrder(){
 this.orderDate="UNKNOWN";
-this.medicineRef=new Medicine();
+this.medicineRef=null;
 this.quantity=0;
 this.uniqueId="UNSET";
 }
