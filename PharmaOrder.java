@@ -11,7 +11,7 @@ this.uniqueId="UNSET";
 }
 public PharmaOrder(String orderDate,Medicine medicineRef,int quantity,String uniqueId){
 this.orderDate="UNKNOWN";
-this.medicineRef=new Medicine();
+this.medicineRef=null;
 this.quantity=0;
 this.uniqueId="UNSET";
 setorderDate(orderDate);
