@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 public class PharmaDeliveries {
     private ArrayList<MedicineDelivery> isComing;
 public PharmaDeliveries(){
@@ -35,5 +36,20 @@ public ArrayList<MedicineDelivery>findAllDeliveries(String medicineName){
         }
     }
     return result;
+}
+public int deleteDeliveries(String supplierName){
+    int count=0;
+    if(supplierName==null){
+        return count;
+    }
+    Iterator<MedicineDelivery> it = isComing.iterator();
+    while(it.hasNext()){
+        MedicineDelivery m =it.next();
+        if(m.getMedicineRef().getSupplierRef().getSupplierName().equalsIgnoreCase(supplierName)){
+            it.remove();
+            count++;
+        }
+    }
+    return count;
 }
 }
