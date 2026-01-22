@@ -44,6 +44,6 @@ public String findCheapest(){
             cheapest=m;
         }
     }
-    return cheapest.getMedicineCode();
+    return cheapest.getMedicineName();
 }
 }
