@@ -32,7 +32,7 @@ public String findExpensive(){
             expensive=m;
         }
     }
-    return expensive.getMedicineCode();
+    return expensive.getMedicineName();
 }
 public String findCheapest(){
     if(products.isEmpty()){
