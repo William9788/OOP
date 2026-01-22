@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Version2App {
     public static void main(String[] args){
@@ -27,5 +28,41 @@ public class Version2App {
         deliveries.addDeliveries(d2);
         deliveries.addDeliveries(d3);
         Scanner keyboard = new Scanner(System.in);
+        System.out.println("Enter medicine name delivered");
+        String mN = keyboard.nextLine();
+        System.out.println("Enter quantity delivered");
+        int qD=keyboard.nextInt();
+        Medicine deliveredMed= stock.findMedicine(mN);
+        if(deliveredMed!=null){
+            deliveredMed.increaseStock(qD);
+            double cost = qD*deliveredMed.getUnitCostPrice();
+            deliveredMed.getSupplierRef().increaseAmountOwed(cost);
+            deliveredMed.setOnOrderFlag(false);
+            MedicineDelivery newDelivery= new MedicineDelivery(deliveredMed,LocalDate.now(),qD);
+            deliveries.addDeliveries(newDelivery);
+            System.out.println("Delivery recorded!");
+        }
+        else{
+            System.out.println("Not found!");
+        }
+        PharmaOrderBook orderBook = new PharmaOrderBook();
+        ArrayList<PharmaOrder> ordersToSend = stock.createOrders();
+        orderBook.add(ordersToSend);
+        int deleted = deliveries.deleteDeliveries("Sean Mcnamara");
+        System.out.println("Deleted " + deleted + " deliveries from Sean Mcnamara");
+        Medicine cheapest = stock.findCheapest();
+        System.out.println("Cheapest medicine:");
+        System.out.println(cheapest);
+        String expensiveName = stock.findExpensive();
+        Medicine expensive = stock.findMedicine(expensiveName);
+        System.out.println("Most expensive medicine:");
+        System.out.println("Name: " + expensive.getMedicineName());
+        System.out.println("Quantity in stock: " + expensive.getQuantityInStock());
+        System.out.println("Supplier: " +expensive.getSupplierRef().getSupplierName());
+        System.out.println("All deliveries of Paracetamol：");
+        ArrayList<MedicineDelivery>paraDeliverys= deliveries.findAllDeliveries("Paracetamol");
+        for(MedicineDelivery m:paraDeliverys){
+            System.out.println(m);
+        }
     }
 }
