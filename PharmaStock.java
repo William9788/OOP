@@ -34,5 +34,16 @@ public String findExpensive(){
     }
     return expensive.getMedicineCode();
 }
-
+public String findCheapest(){
+    if(products.isEmpty()){
+        return null;
+    }
+    Medicine cheapest = products.get(0);
+    for(Medicine m:products){
+        if(m.getUnitCostPrice()<cheapest.getUnitCostPrice()){
+            cheapest=m;
+        }
+    }
+    return cheapest.getMedicineCode();
+}
 }
