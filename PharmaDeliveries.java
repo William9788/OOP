@@ -24,4 +24,16 @@ for(MedicineDelivery m :isComing){
 }
 return result;
 }
+public ArrayList<MedicineDelivery>findAllDeliveries(String medicineName){
+    ArrayList<MedicineDelivery> result = new ArrayList<>();
+    if(medicineName==null){
+        return result;
+    }
+    for(MedicineDelivery m:isComing){
+        if(m.getMedicineRef().getMedicineName().equalsIgnoreCase(medicineName)){
+            result.add(m);
+        }
+    }
+    return result;
+}
 }
