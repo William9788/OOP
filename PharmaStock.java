@@ -22,4 +22,17 @@ public Medicine findMedicine(String name){
     }
     return null;
 }
+public String findExpensive(){
+    if(products.isEmpty()){
+        return null;
+    }
+    Medicine expensive = products.get(0);
+    for(Medicine m:products){
+        if(m.getUnitCostPrice()>expensive.getUnitCostPrice()){
+            expensive=m;
+        }
+    }
+    return expensive.getMedicineCode();
+}
+
 }
