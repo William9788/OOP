@@ -34,7 +34,7 @@ public String findExpensive(){
     }
     return expensive.getMedicineName();
 }
-public String findCheapest(){
+public Medicine findCheapest(){
     if(products.isEmpty()){
         return null;
     }
@@ -44,6 +44,23 @@ public String findCheapest(){
             cheapest=m;
         }
     }
-    return cheapest.getMedicineName();
+    return cheapest;
+}
+public ArrayList<PharmaOrder> createOrders(){
+    ArrayList<PharmaOrder> orders= new ArrayList<>();
+    for(Medicine m:products){
+        if(!m.isOnOrderFlag()&&m.getQuantityInStock()<=m.getReorderLevel()){
+            PharmaOrder order = new PharmaOrder(
+                "AUTO",
+                m,
+                m.getReorderQuantity(),
+                "AUTO"+m.getMedicineCode()
+            );
+            orders.add(order);
+            m.setOnOrderFlag(true);
+
+        }
+    }
+    return orders;
 }
 }
