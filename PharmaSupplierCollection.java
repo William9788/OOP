@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -86,5 +87,21 @@ try {
             return Double.compare(s2.getAmountOwed(), s1.getAmountOwed());
         }
     });
+    }
+    public boolean storeSuppliers(String fileName){
+        if(fileName==null||fileName.trim().isEmpty()){
+            return false;
+        }
+        try(PrintWriter pw = new PrintWriter(new FileWriter(fileName))){
+            for(PharmaSupplier s :suppliers){
+                pw.println(
+                    s.getSupplierName()+","+s.getSupplierAddress()+","+s.getSupplierAddress()+","+s.getAmountOwed()+","+s.getCreditLimit()
+                );
+            }
+        }
+        catch(IOException e){
+            return false;
+        }
+        return true;
     }
 }
