@@ -3,6 +3,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 public class PharmaSupplierCollection {
 private ArrayList<PharmaSupplier> suppliers;
     public boolean add(PharmaSupplier supplier){
@@ -67,5 +69,15 @@ try {
     private void writeInvalidRecord(PrintWriter pw, String record, String reason) {
         pw.println("Invalid record: " + record);
         pw.println("Reason: " + reason);
+    }
+    public void displayAll(){
+        Collections.sort(suppliers,new Comparator<PharmaSupplier>(){
+            public int compare(PharmaSupplier s1,PharmaSupplier s2){
+                return s1.getSupplierName().compareToIgnoreCase(s2.getSupplierName());
+            }
+        });
+        for(PharmaSupplier s:suppliers){
+            System.out.println(s);
+        }
     }
 }
