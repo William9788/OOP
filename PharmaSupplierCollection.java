@@ -80,4 +80,11 @@ try {
             System.out.println(s);
         }
     }
+    public void displayCreditors(){
+        Collections.sort(suppliers, new Comparator<PharmaSupplier>() {
+        public int compare(PharmaSupplier s1, PharmaSupplier s2) {
+            return Double.compare(s2.getAmountOwed(), s1.getAmountOwed());
+        }
+    });
+    }
 }
